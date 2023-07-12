@@ -15,7 +15,7 @@ function Header({ tab, setTab }: Props): React.JSX.Element {
             pr: 2
         }}>
             <Stack direction="row" alignItems="center" justifyContent="space-between">
-                <Tabs value={tab} onChange={handleChange} aria-label="basic tabs example">
+                <Tabs value={tab} onChange={handleChange} aria-label="Вкладки">
                     <Tab label="Детализация" />
                     <Tab label="Пересчёт себестоимости" />
                 </Tabs>
