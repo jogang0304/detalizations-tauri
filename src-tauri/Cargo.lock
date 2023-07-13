@@ -654,6 +654,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "detailing"
+version = "13.7.2023"
+dependencies = [
+ "calamine",
+ "chrono",
+ "serde",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "umya-spreadsheet",
+]
+
+[[package]]
 name = "digest"
 version = "0.10.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4102,17 +4115,4 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73ab332fe2f6680068f3582b16a24f90ad7096d5d39b974d1c0aff0125116f02"
 dependencies = [
  "simd-adler32",
-]
-
-[[package]]
-name = "Обработка"
-version = "13.7.2023"
-dependencies = [
- "calamine",
- "chrono",
- "serde",
- "serde_json",
- "tauri",
- "tauri-build",
- "umya-spreadsheet",
 ]
