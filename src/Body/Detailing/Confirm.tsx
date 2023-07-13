@@ -8,20 +8,32 @@ interface Props {
     outputFolder: string;
     outputFilename: string;
     marketplace: marketplaces;
+    setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
-function Confirm({ inputFile, outputFilename, outputFolder, marketplace }: Props) {
+function Confirm({ inputFile, outputFilename, outputFolder, marketplace, setMessage }: Props) {
     const handleConfirm = async () => {
-        let outputFile = outputFolder + "/" + outputFilename;
         if (outputFilename == "") {
-            outputFile += "БУХ " + inputFile.split(/(\\|\/)/g).pop();
+            outputFilename = "БУХ " + inputFile.split(/(\\|\/)/g).pop();
         }
 
-        const result = await invoke<[boolean, string]>("handle_confirm", {
-            inputFile: inputFile,
-            outputFile: outputFile,
-            marketplace: marketplaces[marketplace],
-        });
-        alert(result[1]);
+        if (!inputFile) {
+            setMessage("Нет входного файла");
+        } else if (!(outputFilename && outputFolder)) {
+            setMessage("Выберите папку");
+        } else {
+            let outputFile = outputFolder + "/" + outputFilename;
+
+            const result = await invoke<[boolean, string]>("handle_confirm", {
+                inputFile: inputFile,
+                outputFile: outputFile,
+                marketplace: marketplaces[marketplace],
+            });
+            if (result[0] == true) {
+                setMessage("Записан файл " + result[1]);
+            } else {
+                setMessage("Ошибка. " + result[1]);
+            }
+        }
     };
 
     return (

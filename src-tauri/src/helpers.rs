@@ -32,11 +32,10 @@ pub fn process_detailing(
     let output_extension = Path::new(&output_file).extension();
     if output_extension.is_none() {
         output_file += ".xlsx";
-    } else {
-        let passes = check_extension(&output_file, &vec!["xlsx", "xls", "xlsm"]);
-        if !passes {
-            return (false, format!("У выходного файла неверное расширение"));
-        }
+    }
+    let passes = check_extension(&output_file, &vec!["xlsx", "xls", "xlsm"]);
+    if !passes {
+        return (false, format!("У выходного файла неверное расширение"));
     }
 
     let source_fp = Path::new(source_file);
@@ -44,13 +43,10 @@ pub fn process_detailing(
 
     let tables = read::read_marketplace(source_fp, marketplace_type);
 
+    if !file_exists(&output_file) {
+        create_file(&output_file);
+    }
     let result = write::write(&tables, output_fp);
 
     return result;
-}
-
-pub fn create_output_file(output_file: &str) {
-    if !file_exists(&output_file) {
-        create_file(output_file);
-    }
 }

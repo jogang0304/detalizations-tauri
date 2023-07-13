@@ -38,7 +38,7 @@ function SelectFile({ filePath, setFilePath }: Props) {
                     <Grid xs={12}>
                         <Stack alignItems="center" spacing={2} justifyContent="center">
                             <Button onClick={handleSelect} variant="contained">Загрузить</Button>
-                            <Typography>{filePath}</Typography>
+                            <Typography>{filePath ? filePath : "Файл детализации"}</Typography>
                         </Stack>
                     </Grid>
                 </Grid>

@@ -6,8 +6,11 @@ import Marketplace from "./Detailing/Marketplace";
 import { marketplaces } from "../enums";
 import Confirm from "./Detailing/Confirm";
 
-function Detailing() {
-    const [inputFile, setInputFile] = useState("Файл детализации");
+interface Props {
+    setMessage: React.Dispatch<React.SetStateAction<string>>;
+}
+function Detailing({ setMessage }: Props) {
+    const [inputFile, setInputFile] = useState("");
     const [outputFolder, setOutputFolder] = useState("");
     const [outputFilename, setOutputFilename] = useState("");
     const [marketplace, setMarketplace] = useState(marketplaces.Ozon);
@@ -28,6 +31,7 @@ function Detailing() {
                 outputFilename={outputFilename}
                 outputFolder={outputFolder}
                 marketplace={marketplace}
+                setMessage={setMessage}
             />
         </Stack>
     );

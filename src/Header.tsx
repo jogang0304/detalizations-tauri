@@ -1,6 +1,9 @@
 import SettingsIcon from "@mui/icons-material/Settings";
-import { AppBar, Grid, Stack, Tab, Tabs } from "@mui/material";
-import React from "react";
+import { AppBar, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
+import React, { useEffect } from "react";
+import { getVersion } from "@tauri-apps/api/app";
+
+const appVersion = await getVersion();
 
 interface Props {
     tab: number;
@@ -11,14 +14,19 @@ function Header({ tab, setTab }: Props): React.JSX.Element {
         setTab(newValue);
     };
     return (
-        <AppBar position="static" color="secondary" sx={{
-            pr: 2
-        }}>
+        <AppBar
+            position="static"
+            color="secondary"
+            sx={{
+                pr: 2,
+            }}
+        >
             <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <Tabs value={tab} onChange={handleChange} aria-label="Вкладки">
                     <Tab label="Детализация" />
                     <Tab label="Пересчёт себестоимости" />
                 </Tabs>
+                <Typography>Версия {appVersion}</Typography>
                 <SettingsIcon />
             </Stack>
         </AppBar>
