@@ -1,5 +1,5 @@
 [package]
-name = "Детализация"
+name = "Обработка"
 version = "13.7.2023"
 description = "A Tauri App"
 authors = ["you"]
