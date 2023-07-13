@@ -48,14 +48,16 @@ fn write_table_header(sheet: &mut Worksheet, row: &mut i32, name: &str) {
 fn write_table(
     sheet: &mut Worksheet,
     row: &mut i32,
-    table: &HashMap<String, OneOperationData>,
+    table: &Vec<(&String, &OneOperationData)>,
     name: &str,
 ) {
     if !table.is_empty() {
         write_table_header(sheet, row, name);
         let mut sum = 0.0;
-        let mut counter = 1;
+        let mut sum_count = 0;
+        let mut counter = 0;
         for (id, data) in table {
+            counter += 1;
             w(sheet, "A", row, &counter.to_string());
             w(sheet, "B", row, &data.name);
             w(sheet, "C", row, &id);
@@ -67,11 +69,11 @@ fn write_table(
                 w(sheet, "F", row, &data.barcode.as_ref().unwrap());
             }
             sum += data.price;
-            sum = (sum * 100.0).round() / 100.0;
-            counter += 1;
+            sum_count += data.count;
             *row += 1;
         }
-        w(sheet, "D", row, "Итого");
+        w(sheet, "C", row, "Итого");
+        w(sheet, "D", row, &sum_count.to_string());
         w(sheet, "E", row, &sum.to_string());
         set_cell_format(sheet, "E", row, FORMAT_CURRENCY_RUB);
         *row += 2;
@@ -105,7 +107,10 @@ pub fn write(marketplace: &WriteMarketplace, fp: &Path) -> (bool, String) {
     write_info(sheet, &mut row, &marketplace.info);
 
     for (_index, table) in marketplace.tables.iter().enumerate() {
-        write_table(sheet, &mut row, &table.data, table.table_name);
+        let mut sorted_data: Vec<_> = table.data.iter().collect();
+        sorted_data.sort_by_key(|a| &a.1.name);
+
+        write_table(sheet, &mut row, &sorted_data, table.table_name);
     }
 
     auto_width_columns(sheet);
