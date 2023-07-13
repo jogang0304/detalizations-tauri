@@ -8,7 +8,7 @@
     },
     "package": {
         "productName": "Детализация",
-        "version": "0.0.0"
+        "version": "13.7.2023"
     },
     "tauri": {
         "allowlist": {
@@ -22,6 +22,9 @@
             "shell": {
                 "all": false,
                 "open": true
+            },
+            "app": {
+                "all": true
             }
         },
         "bundle": {
