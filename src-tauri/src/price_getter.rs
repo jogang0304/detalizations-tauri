@@ -1,8 +1,13 @@
 use walkdir::WalkDir;
 
-pub mod update_price;
+use self::structs::RawPrice;
 
-pub fn process_price_getting(target_dir: &str) -> (bool, String) {
+pub mod structs;
+pub mod get_price;
+pub mod write_price_list;
+
+fn get_price_list(target_dir: &str) -> Vec<RawPrice> {
+    let mut price_list = Vec::new();
     for entry in WalkDir::new(target_dir)
         .follow_links(true)
         .into_iter()
@@ -13,9 +18,14 @@ pub fn process_price_getting(target_dir: &str) -> (bool, String) {
         if filename.ends_with(".xlsm") {
             let filepath = entry.path().to_string_lossy();
             println!("{}", entry.path().to_string_lossy());
-            update_price::update_price(&filepath);
+            let price_entry = get_price::get_entry(&filepath);
+            price_list.push(price_entry);
         }
     }
+    return price_list;
+}
 
-    return (true, "asdf".to_string());
+pub fn process_price_getting(target_dir: &str) -> (bool, String) {
+    let price_list = get_price_list(target_dir);
+    return (true, "Себестоимости обработаны".to_string());
 }

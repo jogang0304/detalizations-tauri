@@ -1,5 +1,7 @@
 use tauri::api::process::Command;
 
+use super::structs::RawPrice;
+
 fn get_name_and_price(file: &str, to_find_price: &str, to_find_name: &str) -> (String, f32) {
     let cmd = Command::new_sidecar("getNameAndPrice")
         .expect("cant create sidecar")
@@ -16,8 +18,11 @@ fn get_name_and_price(file: &str, to_find_price: &str, to_find_name: &str) -> (S
     return (name, price);
 }
 
-pub fn update_price(file: &str) {
+pub fn get_entry(file: &str) -> RawPrice {
     let name_and_price = get_name_and_price(file, "СЕБЕСТОИМОСТЬ", "ПОЛНОЕ НАЗВАНИЕ ИЗДЕЛИЯ");
-    println!("{}", name_and_price.0);
-    println!("{}", name_and_price.1);
+    let entry = RawPrice {
+        name: name_and_price.0,
+        price: name_and_price.1,
+    };
+    return entry;
 }
