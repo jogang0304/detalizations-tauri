@@ -21,7 +21,9 @@
             },
             "shell": {
                 "all": false,
-                "open": true
+                "open": true,
+                "sidecar": true,
+                "scope": [{ "name": "./sidecars/getNameAndPrice", "sidecar": true }]
             },
             "app": {
                 "all": true
@@ -37,7 +39,8 @@
                 "icons/128x128@2x.png",
                 "icons/icon.icns",
                 "icons/icon.ico"
-            ]
+            ],
+            "externalBin": ["./sidecars/getNameAndPrice"]
         },
         "security": {
             "csp": null

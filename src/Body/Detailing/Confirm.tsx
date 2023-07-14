@@ -23,7 +23,7 @@ function Confirm({ inputFile, outputFilename, outputFolder, marketplace, setMess
         } else {
             let outputFile = outputFolder + "/" + outputFilename;
 
-            const result = await invoke<[boolean, string]>("handle_confirm", {
+            const result = await invoke<[boolean, string]>("handle_detailing_confirm", {
                 inputFile: inputFile,
                 outputFile: outputFile,
                 marketplace: marketplaces[marketplace],

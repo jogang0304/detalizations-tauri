@@ -1,10 +1,17 @@
+pub mod files;
+pub mod make_ozon_read_marketplace;
+pub mod make_wildberries_read_marketplace;
+pub mod make_yandex_read_marketplace;
+pub mod read;
+pub mod read_excel;
+pub mod structs;
+pub mod write;
+
 use std::path::Path;
 
 use crate::{
-    files::{check_extension, create_file, delete_file, file_exists},
-    read,
-    structs::MARKETPLACES,
-    write::{self, write},
+    detailing::files::{check_extension, create_file, file_exists},
+    detailing::structs::MARKETPLACES,
 };
 
 pub fn process_detailing(

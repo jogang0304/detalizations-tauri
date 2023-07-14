@@ -1,6 +1,6 @@
 use std::{collections::HashMap, i32};
 
-use crate::structs::{Columns, OneOperationData, ReadTableInfo, WriteTableInfo};
+use crate::detailing::structs::{Columns, OneOperationData, ReadTableInfo, WriteTableInfo};
 use calamine::{open_workbook_auto, DataType, Range, Reader};
 use chrono::{Datelike, NaiveDate};
 

@@ -1,4 +1,4 @@
-use crate::structs::{Columns, ReadAdditionalInfo, ReadMarketplace, ReadTableInfo};
+use crate::detailing::structs::{Columns, ReadAdditionalInfo, ReadMarketplace, ReadTableInfo};
 
 pub fn make_yandex_read_marketplace<'a>(
     fp: String,

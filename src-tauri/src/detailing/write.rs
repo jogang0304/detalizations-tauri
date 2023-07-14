@@ -3,7 +3,7 @@ use std::path::Path;
 
 use umya_spreadsheet::{new_file, writer, HorizontalAlignmentValues, NumberingFormat, Worksheet};
 
-use crate::structs::{OneOperationData, WriteAdditionalInfo, WriteMarketplace};
+use crate::detailing::structs::{OneOperationData, WriteAdditionalInfo, WriteMarketplace};
 
 const FORMAT_CURRENCY_RUB: &'static str = r###"#,##0_-"₽""###;
 

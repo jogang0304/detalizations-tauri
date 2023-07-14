@@ -1,6 +1,6 @@
-use crate::structs::{Columns, ReadAdditionalInfo, ReadMarketplace, ReadTableInfo};
+use crate::detailing::structs::{Columns, ReadAdditionalInfo, ReadMarketplace, ReadTableInfo};
 
-pub fn make_wildberries_read_marketplace<'a>(
+pub fn make_ozon_read_marketplace<'a>(
     fp: String,
     month: Option<i32>,
     accept_any_month: bool,
@@ -9,48 +9,48 @@ pub fn make_wildberries_read_marketplace<'a>(
         ReadTableInfo {
             file_path: fp.clone(),
             sheet_index: 0,
-            start_row: 2,
+            start_row: 15,
             table_name: "Продажа",
-            accept_words: &["Продажа", "Корректная продажа"],
-            accept_any_word: false,
+            accept_words: &[],
+            accept_any_word: true,
             month,
             accept_any_month,
-            add_rows_to_next_section: 3,
-            date_format: Some("%Y-%m-%d"),
+            add_rows_to_next_section: 1,
+            date_format: None,
             columns: Columns {
                 id: "F",
-                name: "G",
-                count: "N",
-                price: "P",
+                name: "D",
+                count: "P",
+                price: "Y",
                 operation_date: "M",
                 operation_type: "K",
-                barcode: Some("I"),
+                barcode: Some("M"),
             },
         },
         ReadTableInfo {
             file_path: fp.clone(),
             sheet_index: 0,
-            start_row: 2,
+            start_row: 15,
             table_name: "Возврат",
-            accept_words: &["Возврат"],
-            accept_any_word: false,
+            accept_words: &[],
+            accept_any_word: true,
             month,
             accept_any_month,
-            add_rows_to_next_section: 3,
-            date_format: Some("%Y-%m-%d"),
+            add_rows_to_next_section: 1,
+            date_format: None,
             columns: Columns {
                 id: "F",
-                name: "G",
-                count: "N",
-                price: "P",
+                name: "D",
+                count: "AD",
+                price: "AH",
                 operation_date: "M",
                 operation_type: "K",
-                barcode: Some("I"),
+                barcode: Some("M"),
             },
         },
     ];
     let additional_info = ReadAdditionalInfo {
-        marketplace_name: "Вайлдберриз",
+        marketplace_name: "Озон",
     };
     let result = ReadMarketplace {
         info: additional_info,
