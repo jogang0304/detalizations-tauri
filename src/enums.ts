@@ -4,4 +4,20 @@ enum marketplaces {
     Yandex,
 }
 
-export { marketplaces };
+enum months {
+    любой,
+    январь,
+    февраль,
+    март,
+    апрель,
+    май,
+    июнь,
+    июль,
+    август,
+    сентябрь,
+    октябрь,
+    ноябрь,
+    декабрь,
+}
+
+export { marketplaces, months };

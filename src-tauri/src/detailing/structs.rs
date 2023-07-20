@@ -84,7 +84,7 @@ pub struct WriteMarketplace<'a> {
 }
 
 pub const MONTHS: [&str; 13] = [
-    "любой месяц",
+    "любой",
     "январь",
     "февраль",
     "март",

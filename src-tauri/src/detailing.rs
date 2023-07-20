@@ -18,6 +18,7 @@ pub fn process_detailing(
     source_file: &str,
     output_file: &str,
     marketplace: &str,
+    month: i32,
 ) -> (bool, String) {
     let mut output_file = output_file.to_owned();
     if !file_exists(&source_file) {
@@ -48,7 +49,7 @@ pub fn process_detailing(
     let source_fp = Path::new(source_file);
     let output_fp = Path::new(&output_file);
 
-    let tables = read::read_marketplace(source_fp, marketplace_type);
+    let tables = read::read_marketplace(source_fp, marketplace_type, month);
 
     if !file_exists(&output_file) {
         create_file(&output_file);

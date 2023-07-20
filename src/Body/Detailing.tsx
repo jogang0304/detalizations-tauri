@@ -3,8 +3,9 @@ import SelectFile from "./Detailing/SelectFile";
 import { useState } from "react";
 import OutputFile from "./Detailing/OutputFile";
 import Marketplace from "./Detailing/Marketplace";
-import { marketplaces } from "../enums";
+import { marketplaces, months } from "../enums";
 import Confirm from "./Detailing/Confirm";
+import Month from "./Detailing/Month";
 
 interface Props {
     setMessage: React.Dispatch<React.SetStateAction<string>>;
@@ -14,6 +15,7 @@ function Detailing({ setMessage }: Props) {
     const [outputFolder, setOutputFolder] = useState("");
     const [outputFilename, setOutputFilename] = useState("");
     const [marketplace, setMarketplace] = useState(marketplaces.Ozon);
+    const [month, setMonth] = useState(months.любой);
 
     return (
         <Stack spacing={2}>
@@ -26,11 +28,13 @@ function Detailing({ setMessage }: Props) {
                 setOutputFolder={setOutputFolder}
             />
             <Marketplace marketplace={marketplace} setMarketplace={setMarketplace} />
+            <Month month={month} setMonth={setMonth} />
             <Confirm
                 inputFile={inputFile}
                 outputFilename={outputFilename}
                 outputFolder={outputFolder}
                 marketplace={marketplace}
+                month={month}
                 setMessage={setMessage}
             />
         </Stack>

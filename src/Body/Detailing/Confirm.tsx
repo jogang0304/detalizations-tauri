@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import { SPaper } from "../../Styled";
-import { marketplaces } from "../../enums";
+import { marketplaces, months } from "../../enums";
 import { invoke } from "@tauri-apps/api/tauri";
 
 interface Props {
@@ -8,9 +8,17 @@ interface Props {
     outputFolder: string;
     outputFilename: string;
     marketplace: marketplaces;
+    month: months;
     setMessage: React.Dispatch<React.SetStateAction<string>>;
 }
-function Confirm({ inputFile, outputFilename, outputFolder, marketplace, setMessage }: Props) {
+function Confirm({
+    inputFile,
+    outputFilename,
+    outputFolder,
+    marketplace,
+    month,
+    setMessage,
+}: Props) {
     const handleConfirm = async () => {
         if (outputFilename == "") {
             outputFilename = "БУХ " + inputFile.split(/(\\|\/)/g).pop();
@@ -27,6 +35,7 @@ function Confirm({ inputFile, outputFilename, outputFolder, marketplace, setMess
                 inputFile: inputFile,
                 outputFile: outputFile,
                 marketplace: marketplaces[marketplace],
+                month: month,
             });
             if (result[0] == true) {
                 setMessage("Записан файл " + result[1]);

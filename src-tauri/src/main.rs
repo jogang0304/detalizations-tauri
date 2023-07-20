@@ -9,9 +9,10 @@ fn handle_detailing_confirm(
     input_file: &str,
     output_file: &str,
     marketplace: &str,
+    month: i32,
 ) -> (bool, String) {
     let result = std::panic::catch_unwind(|| {
-        detailing::process_detailing(input_file, output_file, marketplace)
+        detailing::process_detailing(input_file, output_file, marketplace, month)
     });
     if result.is_ok() {
         return result.unwrap();
