@@ -27,7 +27,7 @@
                 "all": false,
                 "open": true,
                 "sidecar": true,
-                "scope": [{ "name": "./sidecars/getNameAndPrice", "sidecar": true }]
+                "scope": [{ "name": "./sidecars/executables/getNameAndPrice", "sidecar": true }]
             },
             "app": {
                 "all": true
@@ -44,7 +44,7 @@
                 "icons/icon.icns",
                 "icons/icon.ico"
             ],
-            "externalBin": ["./sidecars/getNameAndPrice"]
+            "externalBin": ["./sidecars/executables/getNameAndPrice"]
         },
         "security": {
             "csp": null
