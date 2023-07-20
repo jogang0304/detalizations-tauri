@@ -10,6 +10,8 @@ interface Props {
     outputFileName: string;
     setOutputFolder: React.Dispatch<React.SetStateAction<string>>;
     setOutputFilename: React.Dispatch<React.SetStateAction<string>>;
+    lastFolder: string;
+    setLastFolder: React.Dispatch<React.SetStateAction<string>>;
 }
 function OutputFile({
     inputFile,
@@ -17,6 +19,8 @@ function OutputFile({
     outputFileName,
     setOutputFilename,
     setOutputFolder,
+    lastFolder,
+    setLastFolder,
 }: Props) {
     const [tabValue, setTabValue] = useState(0);
 
@@ -52,6 +56,8 @@ function OutputFile({
                                 outputFolder={outputFolder}
                                 setOutputFilename={setOutputFilename}
                                 setOutputFolder={setOutputFolder}
+                                lastFolder={lastFolder}
+                                setLastFolder={setLastFolder}
                             />
                         )}
                         {tabValue === 1 && (
@@ -61,6 +67,8 @@ function OutputFile({
                                 outputFolder={outputFolder}
                                 setOutputFilename={setOutputFilename}
                                 setOutputFolder={setOutputFolder}
+                                lastFolder={lastFolder}
+                                setLastFolder={setLastFolder}
                             />
                         )}
                     </Grid>

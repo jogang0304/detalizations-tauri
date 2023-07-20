@@ -8,6 +8,8 @@ interface Props {
     outputFileName: string;
     setOutputFolder: React.Dispatch<React.SetStateAction<string>>;
     setOutputFilename: React.Dispatch<React.SetStateAction<string>>;
+    lastFolder: string;
+    setLastFolder: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function NewFile({
@@ -16,15 +18,18 @@ function NewFile({
     outputFileName,
     setOutputFilename,
     setOutputFolder,
+    lastFolder,
+    setLastFolder,
 }: Props) {
     const handleSelect = async () => {
         const selected = await open({
             directory: true,
             multiple: false,
-            defaultPath: await documentDir(),
+            defaultPath: lastFolder,
         });
         if (selected !== null && !Array.isArray(selected)) {
             setOutputFolder(selected);
+            setLastFolder(selected);
         }
     };
     const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

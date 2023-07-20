@@ -8,6 +8,8 @@ interface Props {
     outputFileName: string;
     setOutputFolder: React.Dispatch<React.SetStateAction<string>>;
     setOutputFilename: React.Dispatch<React.SetStateAction<string>>;
+    lastFolder: string;
+    setLastFolder: React.Dispatch<React.SetStateAction<string>>;
 }
 
 function SelectFile({
@@ -16,6 +18,8 @@ function SelectFile({
     outputFileName,
     setOutputFilename,
     setOutputFolder,
+    lastFolder,
+    setLastFolder,
 }: Props) {
     const handleSelect = async () => {
         const selected = await open({
@@ -27,7 +31,7 @@ function SelectFile({
                 },
             ],
             multiple: false,
-            defaultPath: await documentDir(),
+            defaultPath: lastFolder,
         });
         if (selected !== null && !Array.isArray(selected)) {
             const splittedFile = selected.split(/(\\|\/)/g);
@@ -39,6 +43,7 @@ function SelectFile({
                 }
             });
             setOutputFolder(folderPath);
+            setLastFolder(folderPath);
         }
     };
 

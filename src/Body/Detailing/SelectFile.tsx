@@ -7,9 +7,11 @@ import { SPaper } from "../../Styled";
 interface Props {
     filePath: string;
     setFilePath: React.Dispatch<React.SetStateAction<string>>;
+    lastFolder: string;
+    setLastFolder: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function SelectFile({ filePath, setFilePath }: Props) {
+function SelectFile({ filePath, setFilePath, lastFolder, setLastFolder }: Props) {
     const handleSelect = async () => {
         const selected = await open({
             directory: false,
@@ -20,10 +22,12 @@ function SelectFile({ filePath, setFilePath }: Props) {
                 },
             ],
             multiple: false,
-            defaultPath: await downloadDir(),
+            defaultPath: lastFolder,
         });
         if (selected !== null && !Array.isArray(selected)) {
             setFilePath(selected);
+            let fileFolder = selected.split(/(\\|\/)/g).slice(0, -1).join("/");
+            setLastFolder(fileFolder);
         }
     };
 
@@ -37,7 +41,9 @@ function SelectFile({ filePath, setFilePath }: Props) {
                 <Grid container>
                     <Grid xs={12}>
                         <Stack alignItems="center" spacing={2} justifyContent="center">
-                            <Button onClick={handleSelect} variant="contained">Загрузить</Button>
+                            <Button onClick={handleSelect} variant="contained">
+                                Загрузить
+                            </Button>
                             <Typography>{filePath ? filePath : "Файл детализации"}</Typography>
                         </Stack>
                     </Grid>
