@@ -9,7 +9,7 @@ pub fn make_ozon_read_marketplace<'a>(
         ReadTableInfo {
             file_path: fp.clone(),
             sheet_index: 0,
-            start_row: 15,
+            start_row: 16,
             table_name: "Продажа",
             accept_words: &[],
             accept_any_word: true,
@@ -18,13 +18,13 @@ pub fn make_ozon_read_marketplace<'a>(
             add_rows_to_next_section: 1,
             date_format: None,
             columns: Columns {
-                id: "F",
-                name: "D",
-                count: "P",
-                price: "Y",
+                id: "C",
+                name: "B",
+                count: "H",
+                price: "M",
                 operation_date: "M",
-                operation_type: "K",
-                barcode: Some("M"),
+                operation_type: "M",
+                barcode: Some("E"),
             },
         },
         ReadTableInfo {
@@ -39,13 +39,13 @@ pub fn make_ozon_read_marketplace<'a>(
             add_rows_to_next_section: 1,
             date_format: None,
             columns: Columns {
-                id: "F",
-                name: "D",
-                count: "AD",
-                price: "AH",
+                id: "C",
+                name: "B",
+                count: "P",
+                price: "S",
                 operation_date: "M",
-                operation_type: "K",
-                barcode: Some("M"),
+                operation_type: "M",
+                barcode: Some("E"),
             },
         },
     ];
@@ -54,7 +54,7 @@ pub fn make_ozon_read_marketplace<'a>(
     };
     let result = ReadMarketplace {
         info: additional_info,
-        tables: tables,
+        tables,
     };
 
     return result;
