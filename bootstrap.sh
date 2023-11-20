@@ -6,3 +6,11 @@ cd "${0%/*}"
 rustup update
 npm i
 npm run tauri build
+
+
+
+
+
+
+
+
