@@ -32,7 +32,6 @@ jobs:
                   sudo ln -sf /usr/bin/python3.11 /usr/bin/python
                   sudo ln -sf /usr/bin/pip3.11 /usr/bin/pip
                   python -V
-                  pip -V
             - name: install frontend dependencies
               run: npm install # change this to npm or pnpm depending on which one you use
             - name: build sidecars
