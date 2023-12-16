@@ -2,8 +2,8 @@ use walkdir::WalkDir;
 
 use self::structs::RawPrice;
 
-pub mod structs;
 pub mod get_price;
+pub mod structs;
 pub mod write_price_list;
 
 fn get_price_list(target_dir: &str) -> Vec<RawPrice> {

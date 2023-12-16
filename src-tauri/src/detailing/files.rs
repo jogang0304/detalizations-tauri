@@ -1,7 +1,7 @@
 use std::fs::File;
-use std::process::Command;
-use std::{fs, env};
 use std::path::Path;
+use std::process::Command;
+use std::{env, fs};
 
 pub fn file_exists(fp: &str) -> bool {
     let ans = Path::new(fp).exists();
