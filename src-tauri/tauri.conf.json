@@ -8,7 +8,7 @@
     },
     "package": {
         "productName": "Обработка",
-        "version": "18.11.2023-action"
+        "version": "18.11.2023-action2"
     },
     "tauri": {
         "allowlist": {
