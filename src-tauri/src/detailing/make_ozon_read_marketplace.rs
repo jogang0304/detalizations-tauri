@@ -20,8 +20,8 @@ pub fn make_ozon_read_marketplace<'a>(
             columns: Columns {
                 id: "C",
                 name: "B",
-                count: "H",
-                price: "M",
+                count: "I",
+                price: "N",
                 operation_date: "M",
                 operation_type: "M",
                 barcode: Some("E"),
@@ -30,7 +30,7 @@ pub fn make_ozon_read_marketplace<'a>(
         ReadTableInfo {
             file_path: fp.clone(),
             sheet_index: 0,
-            start_row: 15,
+            start_row: 16,
             table_name: "Возврат",
             accept_words: &[],
             accept_any_word: true,
@@ -41,8 +41,8 @@ pub fn make_ozon_read_marketplace<'a>(
             columns: Columns {
                 id: "C",
                 name: "B",
-                count: "P",
-                price: "S",
+                count: "R",
+                price: "U",
                 operation_date: "M",
                 operation_type: "M",
                 barcode: Some("E"),
