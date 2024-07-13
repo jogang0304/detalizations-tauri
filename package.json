@@ -1,7 +1,7 @@
 {
   "name": "Обработка",
   "private": true,
-  "version": "13.07.2023",
+  "version": "13.7.2023",
   "type": "module",
   "scripts": {
     "dev": "vite",

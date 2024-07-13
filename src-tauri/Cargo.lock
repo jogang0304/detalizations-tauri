@@ -658,7 +658,7 @@ dependencies = [
 
 [[package]]
 name = "detailing"
-version = "16.12.2023"
+version = "13.7.2024"
 dependencies = [
  "calamine",
  "chrono",
