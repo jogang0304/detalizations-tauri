@@ -57,6 +57,9 @@ fn write_table(
         let mut sum_count = 0;
         let mut counter = 0;
         for (id, data) in table {
+            if data.count == 0 {
+                continue;
+            }
             counter += 1;
             w(sheet, "A", row, &counter.to_string());
             w(sheet, "B", row, &data.name);
