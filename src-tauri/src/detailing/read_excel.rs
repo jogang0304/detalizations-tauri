@@ -56,7 +56,7 @@ fn add_to_table(
         return;
     }
 
-    let count = val_to_string(count_raw, "1").parse::<i64>().unwrap_or(1);
+    let count = val_to_string(count_raw, "0").parse::<i64>().unwrap_or(0);
     let price = val_to_string(price_raw, "0").parse::<f64>().unwrap_or(0.0);
     let mut table_data = operations_table
         .entry(id)
