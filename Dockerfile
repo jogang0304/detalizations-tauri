@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as builder
 
 WORKDIR /tmp
 
@@ -32,14 +32,16 @@ ENV APT_REQUIREMENTS="git \
     xz-utils" \
     TZ=Europe/Zurich \
     DEBIAN_FRONTEND=noninteractive \
-    PYTHON_ARCHIVE="Python-3.11.14"
+    PYTHON_ARCHIVE="Python-3.11.14" \
+    LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH" \
+    PATH="/root/.cargo/bin:${PATH}"
 
 RUN apt-get -y update && apt-get -y upgrade && \
     apt-get -y install ${APT_REQUIREMENTS} && \
     curl --output ${PYTHON_ARCHIVE}.tgz https://www.python.org/ftp/python/3.11.14/${PYTHON_ARCHIVE}.tgz && \
     tar -xf ${PYTHON_ARCHIVE}.tgz && \
     cd ${PYTHON_ARCHIVE} && \
-    ./configure --enable-optimizations && \
+    ./configure --enable-optimizations --enable-shared && \
     make -j $(nproc) && \
     make altinstall && \
     python3.11 -m ensurepip --default-pip && \
@@ -49,14 +51,11 @@ RUN apt-get -y update && apt-get -y upgrade && \
     nvm install 20 && \
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 
-WORKDIR /app
-
-ENV PATH="/root/.cargo/bin:${PATH}"
-
-COPY . .
-
-RUN \. "$HOME/.nvm/nvm.sh" && \
+ENTRYPOINT cd /app && \
+    python3.11 -m pip install -r requirements.txt && \
+    \. "$HOME/.nvm/nvm.sh" && \
     nvm use 20 && \
-    ./bootstrap.sh && \
-    cargo cache --autoclean && \
-    npm cache clean --force
+    npm i && \
+    ./src-tauri/sidecars/bootstrap.sh && \
+    rustup update && \
+    npm run tauri build -- --verbose --ci --bundles appimage

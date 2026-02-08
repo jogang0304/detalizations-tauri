@@ -8,7 +8,7 @@
     },
     "package": {
         "productName": "Detailing",
-        "version": "08.02.2026"
+        "version": "8.2.2026"
     },
     "tauri": {
         "allowlist": {

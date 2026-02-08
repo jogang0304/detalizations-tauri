@@ -32,6 +32,11 @@ fn handle_price_confirm(target_dir: &str) -> (bool, String) {
 }
 
 fn main() {
+    #[cfg(target_os = "linux")]
+    unsafe {
+        std::env::set_var("WEBKIT_DISABLE_DMABUF_RENDERER", "1");
+    }
+
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![
             handle_detailing_confirm,
