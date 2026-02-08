@@ -20,7 +20,7 @@ pub fn make_ozon_read_marketplace<'a>(
             columns: Columns {
                 id: "C",
                 name: "B",
-                count: "I",
+                count: "H",
                 price: "F",
                 operation_date: "M",
                 operation_type: "M",
@@ -41,8 +41,8 @@ pub fn make_ozon_read_marketplace<'a>(
             columns: Columns {
                 id: "C",
                 name: "B",
-                count: "R",
-                price: "O",
+                count: "M",
+                price: "K",
                 operation_date: "M",
                 operation_type: "M",
                 barcode: Some("E"),

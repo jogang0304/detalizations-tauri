@@ -1,11 +1,11 @@
 [package]
 name = "detailing"
-version = "14.7.2024"
+version = "8.2.2026"
 description = "A Tauri App"
 authors = ["jogang"]
 license = ""
 repository = ""
-edition = "2021"
+edition = "8.2.2026"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
