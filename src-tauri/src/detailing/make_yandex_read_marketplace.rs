@@ -8,7 +8,7 @@ pub fn make_yandex_read_marketplace<'a>(
     let tables = vec![
         ReadTableInfo {
             file_path: fp.clone(),
-            sheet_index: 1,
+            sheet_index: 0,
             start_row: 5,
             table_name: "Получено от потребителей",
             accept_words: &["Начисление"],
@@ -29,7 +29,7 @@ pub fn make_yandex_read_marketplace<'a>(
         },
         ReadTableInfo {
             file_path: fp.clone(),
-            sheet_index: 2,
+            sheet_index: 1,
             start_row: 5,
             table_name: "Возврат",
             accept_words: &["Возврат"],
@@ -50,7 +50,7 @@ pub fn make_yandex_read_marketplace<'a>(
         },
         ReadTableInfo {
             file_path: fp.clone(),
-            sheet_index: 3,
+            sheet_index: 4,
             start_row: 5,
             table_name: "Удержание",
             accept_words: &["Удержание"],
