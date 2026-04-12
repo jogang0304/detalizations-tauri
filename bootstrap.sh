@@ -2,7 +2,5 @@
 
 cd "${0%/*}"
 
-./src-tauri/sidecars/bootstrap.sh
-rustup update
-npm i
-npm run tauri build -- --verbose
+docker build -t detailing-builder .
+docker run -v $(pwd):/app detailing-builder
